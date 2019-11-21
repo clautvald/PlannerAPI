@@ -32,18 +32,6 @@ class Proveedore(models.Model):
         return self.proveedores_nombre
 
 
-    
-class Cliente(models.Model): 
-    nombre_cliente = models.CharField(max_length =150)
-    apellidos_cliente = models.CharField(max_length =150)
-    celular_cliente = models.CharField(max_length =150)
-    correo_cliente = models.CharField(max_length =150)
-    genero = models.CharField(max_length =150)
-    edad = models.IntegerField(default =0)
-    
-    def __str__(self):
-        return self.nombre_cliente
-        
 class MiEvento(models.Model):
     eventos = models.ForeignKey(Evento, on_delete=models.CASCADE)
     servicios = models.ForeignKey(Servicio, on_delete=models.CASCADE)
@@ -51,4 +39,19 @@ class MiEvento(models.Model):
     proveedores = models.ForeignKey(Proveedore, on_delete=models.CASCADE)
     productos= models.ForeignKey(Producto, on_delete=models.CASCADE)
     fecha_evento = models.DateTimeField('fecha de evento')
+
+
+class Cliente(models.Model): 
+    nombre_cliente = models.CharField(max_length =150)
+    apellidos_cliente = models.CharField(max_length =150)
+    celular_cliente = models.CharField(max_length =150)
+    correo_cliente = models.CharField(max_length =150)
+    genero = models.CharField(max_length =150)
+    edad = models.IntegerField(default =0)
+    miseventos = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.nombre_cliente
+        
+
 
